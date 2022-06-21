@@ -1,5 +1,5 @@
-def apply(name){
-  echo "My name is ${name} --auto-approve"
+def call(name){
+  echo "My name is ${name}, How are you?"
 
 }
 
