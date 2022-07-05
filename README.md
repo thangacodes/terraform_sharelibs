@@ -1,5 +1,5 @@
 
-* Jenkins Shared Library *
+* Jenkins Shared Library
 
 Developers/IaC automation guys use shared libraries to avoid writing the same code from scratch for multiple projects.
 
