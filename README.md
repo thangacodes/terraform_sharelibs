@@ -8,6 +8,7 @@ In order to implement Jenkins shared library in Jenkins CICD, following things n
 Directory structure
 The directory structure of a Shared Library repository is as follows:
 
+
 (root)
 +- src                     # Groovy source files
 |   +- org
@@ -20,7 +21,6 @@ The directory structure of a Shared Library repository is as follows:
 |   +- org
 |       +- foo
 |           +- bar.json    # static helper data for org.foo.Bar
-
 
 
 
