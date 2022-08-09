@@ -1,11 +1,16 @@
 
-* Jenkins Shared Library
+* Jenkins Shared Library:-
 
-Developers/IaC automation guys use shared libraries to avoid writing the same code from scratch for multiple projects.
+Developers/IaC automation guys use shared libraries to avoid writing the same code from scratch for multiple projects. Main Advantages are,
 
-In order to implement Jenkins shared library in Jenkins CICD, following things needs to be in place. The directory structure should be like this,
+1.Code resuability
+2.Avoid code duplication
+3.Changes has been maintained in Version Control
 
-Directory structure
+In order to implement Jenkins shared library in Jenkins CICD, following things needs to be in place.
+
+# Directory structure:
+
 The directory structure of a Shared Library repository is as follows:
 
 
