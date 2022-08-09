@@ -4,8 +4,11 @@
 Developers/IaC automation guys use shared libraries to avoid writing the same code from scratch for multiple projects. Main Advantages are,
 
 1.Code resuability
+
 2.Avoid code duplication
+
 3.Changes has been maintained in Version Control
+
 
 In order to implement Jenkins shared library in Jenkins CICD, following things needs to be in place.
 
