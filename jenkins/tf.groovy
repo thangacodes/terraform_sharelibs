@@ -1,5 +1,6 @@
 def tfinit(){
     echo 'Terraform initialization in progress'
+    sh 'terraform init'
 }
 def tfformat(){
     echo 'Terraform format in progress'
