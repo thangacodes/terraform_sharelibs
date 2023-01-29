@@ -2,10 +2,10 @@ def gv
 
 pipeline {
     agent any
-    parameters {
-        choice(name: 'VERSION', choices:['1.1.0','1.2.0','1.3.0'], description:'')
-        booleanParam(name: 'executeTests', defaultValue: true, description: '')
-    }
+    // parameters {
+    //     choice(name: 'VERSION', choices:['1.1.0','1.2.0','1.3.0'], description:'')
+    //     booleanParam(name: 'executeTests', defaultValue: true, description: '')
+    // }
     stages{
         stage("code clone"){
             steps{
@@ -13,29 +13,24 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/send2durai/terraform_sharelibs.git'
             }
         }
-        stage("init"){
+        stage("loading groovy"){
             steps{
                 script{
                     gv = load "tf.groovy"
                 }
             }
         }
-        stage("test"){
-            when{
-                expression {
-                    params.executeTests
-                }
-            }
+        stage("init"){
             steps{
                 script{
-                    gv.tfplan()
+                    gv.tfinit()
                 }
             }
         }
         stage("deploy"){
             steps{
                 script {
-                    gv.tfapply()
+                    gv.tfplan()
                 }
             }
         }
