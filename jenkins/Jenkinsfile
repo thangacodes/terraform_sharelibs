@@ -9,6 +9,7 @@ pipeline {
         stage("init"){
             steps{
                 script{
+                    sh 'pwd'
                     gv = load "tf.groovy"
                 }
             }
@@ -17,6 +18,7 @@ pipeline {
             steps{
                 echo "building the applications...."
                 script{
+                    sh 'terraform init'
                     gv.tfinit()
                 }
             }
@@ -29,6 +31,7 @@ pipeline {
             }
             steps{
                 script{
+                    sh 'terraform plan'
                     gv.tfplan()
                 }
             }
@@ -36,6 +39,7 @@ pipeline {
         stage("deploy"){
             steps{
                 script {
+                    sh 'terraform apply'
                     gv.tfapply()
                 }
             }
