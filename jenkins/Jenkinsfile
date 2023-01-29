@@ -1,39 +1,57 @@
+def gv
+
 pipeline {
     agent any
-	parameters {
-    choice choices: ['Development', 'Certification', 'Staging', 'Production'], description: 'Please select the environment?', name: 'ENVIRONMENT'
-}
+    parameters {
+        choice(name: 'VERSION', choices:['1.1.0','1.2.0','1.3.0'], description:'')
+        booleanParam(name: 'executeTests', defaultValue: true, description: '')
+    }
     stages{
-    stage("Are we good to deploy? Say yes or no?"){
-        input{
-           message "Should we deploy the project?"
-             }
-	    steps{
-	      echo 'India is my country!'
-	    }
-	}
-    stage('Build') {
-        steps {
-            echo 'Building..'
+        stage("init"){
+            steps{
+                script{
+                    sh 'pwd'
+                    gv = load "tf.groovy"
+                }
             }
+        }
+        stage("build"){
+            steps{
+                echo "building the applications...."
+                script{
+                    sh 'terraform init'
+                    gv.tfinit()
+                }
+            }
+        }
+        stage("test"){
+            when{
+                expression {
+                    params.executeTests
+                }
+            }
+            steps{
+                script{
+                    sh 'terraform plan'
+                    gv.tfplan()
+                }
+            }
+        }
+        stage("deploy"){
+            steps{
+                script {
+                    sh 'terraform apply'
+                    gv.tfapply()
+                }
+            }
+        }
+        stage('Workspace Cleanup'){
+            steps{
+                sh '''
+                   echo "Cleaning the Jenkins Workspace"
+                '''
+                cleanWs()
+            }
+        }
     }
-    stage('Test'){
-        steps {
-            echo 'Testing..'
-            }
-    }
-    stage('Deploy') {
-        steps {
-            echo 'Deploying....'
-            }
-    }
-	stage('Workspace CleanUp'){
-		steps{
-			sh '''
-			    echo "Cleaning the Jenkins workspace"
-			'''
-			cleanWs()
-            }
-		}
-	}
 }
