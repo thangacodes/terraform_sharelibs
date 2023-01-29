@@ -1,44 +1,39 @@
-def gv
-
 pipeline {
     agent any
-    parameters {
-        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
-        booleanParam(name: 'executeTests', defaultValue: true, description: '')
+	parameters {
+    choice choices: ['Development', 'Certification', 'Staging', 'Production'], description: 'Please select the environment?', name: 'ENVIRONMENT'
+}
+    stages{
+    stage("Are we good to deploy? Say yes or no?"){
+        input{
+           message "Should we deploy the project?"
+             }
+	    steps{
+	      echo 'India is my country!'
+	    }
+	}
+    stage('Build') {
+        steps {
+            echo 'Building..'
+            }
     }
-    stages {
-        stage("init") {
-            steps {
-                script {
-                   gv = load "script.groovy" 
-                }
+    stage('Test'){
+        steps {
+            echo 'Testing..'
             }
-        }
-        stage("build") {
-            steps {
-                script {
-                    gv.buildApp()
-                }
+    }
+    stage('Deploy') {
+        steps {
+            echo 'Deploying....'
             }
-        }
-        stage("test") {
-            when {
-                expression {
-                    params.executeTests
-                }
+    }
+	stage('Workspace CleanUp'){
+		steps{
+			sh '''
+			    echo "Cleaning the Jenkins workspace"
+			'''
+			cleanWs()
             }
-            steps {
-                script {
-                    gv.testApp()
-                }
-            }
-        }
-        stage("deploy") {
-            steps {
-                script {
-                    gv.deployApp()
-                }
-            }
-        }
-    }   
+		}
+	}
 }
