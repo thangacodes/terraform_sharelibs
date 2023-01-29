@@ -7,20 +7,18 @@ pipeline {
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
     stages{
-        stage("init"){
+        stage("code clone"){
             steps{
-                script{
-                    sh 'pwd'
-                    gv = load "tf.groovy"
-                }
+                echo 'Git repo cloning in progress..'
+                git branch: 'main' url: 'https://github.com/send2durai/terraform_sharelibs.git'
             }
         }
         stage("build"){
             steps{
                 echo "building the applications...."
                 script{
-                    sh 'terraform init'
-                    gv.tfinit()
+                    sh 'pwd'
+                    gv = load "tf.groovy"
                 }
             }
         }
@@ -32,7 +30,6 @@ pipeline {
             }
             steps{
                 script{
-                    sh 'terraform plan'
                     gv.tfplan()
                 }
             }
@@ -40,7 +37,6 @@ pipeline {
         stage("deploy"){
             steps{
                 script {
-                    sh 'terraform apply'
                     gv.tfapply()
                 }
             }
