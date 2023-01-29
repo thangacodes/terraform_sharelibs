@@ -1,12 +1,12 @@
-def buildApp() {
+def tfinit() {
     echo 'building the application...'
 } 
 
-def testApp() {
+def tfplan() {
     echo 'testing the application...'
 } 
 
-def deployApp() {
+def tfapply() {
     echo 'deplying the application...'
     echo "deploying version ${params.VERSION}"
 } 
