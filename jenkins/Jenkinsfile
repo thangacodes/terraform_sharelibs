@@ -16,7 +16,6 @@ pipeline {
         stage("init"){
             steps{
                 script{
-                    sh 'pwd'
                     gv = load "tf.groovy"
                 }
             }
