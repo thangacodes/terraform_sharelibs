@@ -16,6 +16,8 @@ pipeline {
         stage('loading groovy'){
             steps{
                 script{
+                    pwd
+                    sleep(5)
                     gv = load "terra.groovy"
                 }
             }
