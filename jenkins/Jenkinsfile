@@ -52,7 +52,10 @@ pipeline {
         }
         stage('User Input'){
             input{
-                message "should we deploy the tf project?"
+                message "should we deploy the tf project? Say yes or no?"
+            }
+            steps{
+                echo 'Terraform code in progress'
             }
         }
         stage('Workspace Cleanup'){
