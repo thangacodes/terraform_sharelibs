@@ -50,6 +50,11 @@ pipeline {
                 }
             }
         }
+        stage('User Input'){
+            input{
+                message "should we deploy the tf project?"
+            }
+        }
         stage('Workspace Cleanup'){
             steps{
                 sh '''
