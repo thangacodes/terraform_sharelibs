@@ -25,7 +25,7 @@ pipeline {
         stage('init'){
             steps{
                 script{
-                    cd ec2_spinup
+                    cd ./ec2_spinup
                     gv.tfinit()
                 }
             }
@@ -33,7 +33,7 @@ pipeline {
         stage('fmt'){
             steps{
                 script {
-                    cd ec2_spinup
+                    cd ./ec2_spinup
                     gv.tffmt()
                 }
             }
@@ -41,7 +41,7 @@ pipeline {
         stage('validate'){
             steps{
                 script {
-                    cd ec2_spinup
+                    cd ./ec2_spinup
                     gv.tfvalidate()
                 }
             }
@@ -49,7 +49,7 @@ pipeline {
         stage('plan'){
             steps{
                 script {
-                    cd ec2_spinup
+                    cd ./ec2_spinup
                     gv.tfplan()
                 }
             }
