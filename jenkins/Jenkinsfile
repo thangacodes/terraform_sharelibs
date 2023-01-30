@@ -16,6 +16,7 @@ pipeline {
         stage('loading groovy'){
             steps{
                 script{
+                    pwd
                     sleep(5)
                     gv = load "jenkins/terra.groovy"
                 }
@@ -32,6 +33,13 @@ pipeline {
             steps{
                 script {
                     gv.tfplan()
+                }
+            }
+        }
+        stage('apply'){
+            steps{
+                script {
+                    gv.tfapply()
                 }
             }
         }
