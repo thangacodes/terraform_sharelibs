@@ -29,17 +29,24 @@ pipeline {
                 }
             }
         }
+        stage('fmt'){
+            steps{
+                script {
+                    gv.tffmt()
+                }
+            }
+        }
+        stage('validate'){
+            steps{
+                script {
+                    gv.tfvalidate()
+                }
+            }
+        }
         stage('plan'){
             steps{
                 script {
                     gv.tfplan()
-                }
-            }
-        }
-        stage('apply'){
-            steps{
-                script {
-                    gv.tfapply()
                 }
             }
         }
