@@ -7,27 +7,27 @@ pipeline {
     //     booleanParam(name: 'executeTests', defaultValue: true, description: '')
     // }
     stages{
-        stage("code clone"){
+        stage('code clone'){
             steps{
                 echo 'Git repo cloning in progress..'
                 git branch: 'main', url: 'https://github.com/send2durai/terraform_sharelibs.git'
             }
         }
-        stage("loading groovy"){
+        stage('loading groovy'){
             steps{
                 script{
-                    gv = load "tf.groovy"
+                    gv = load "terra.groovy"
                 }
             }
         }
-        stage("init"){
+        stage('init'){
             steps{
                 script{
                     gv.tfinit()
                 }
             }
         }
-        stage("deploy"){
+        stage('plan'){
             steps{
                 script {
                     gv.tfplan()
