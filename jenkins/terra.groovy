@@ -1,17 +1,35 @@
 def tfinit() {
     echo 'terraform init in progress...'
-    sh 'terraform init'
+    sh '''
+         cd ec2_spinup
+         pwd
+         terraform init
+       '''      
 } 
 def tffmt() {
     echo 'terraform format in progress...'
-    sh 'terraform fmt'
+    sh '''
+         cd ec2_spinup
+         pwd
+         terraform fmt
+      '''
+    
 } 
 def tfvalidate() {
     echo 'terraform validate in progress...'
-    sh 'terraform valiadte'
+    sh '''
+          cd ec2_spinup
+          pwd
+          terraform validate
+      '''
+       
 } 
 def tfplan() {
     echo 'terraform plan in progress...'
-    sh 'terraform plan'
+    sh '''
+         cd ec2_spinup
+         pwd
+         terraform plan
+      '''
 } 
 return this
