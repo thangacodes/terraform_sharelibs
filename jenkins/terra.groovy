@@ -1,5 +1,6 @@
 def tfinit() {
-    echo 'terraform initialization in progress...'
+    echo 'terraform init in progress...'
+    sh 'terraform init'
 } 
 def tfplan() {
     echo 'terraform plan in progress...'
