@@ -1,14 +1,10 @@
 def tfinit() {
-    echo 'building the application...'
+    echo 'terraform initialization in progress...'
 } 
-
 def tfplan() {
-    echo 'testing the application...'
+    echo 'terraform plan in progress...'
 } 
-
 def tfapply() {
-    echo 'deplying the application...'
-    echo "deploying version ${params.VERSION}"
+    echo 'terraform apply in progress...'
 } 
-
 return this
