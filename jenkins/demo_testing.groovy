@@ -1,4 +1,4 @@
-pipelineJob('demo_testing'){
+pipelineJob('jenkins/demo_testing'){
     logRotator {
         numToKeep(1)
     }
