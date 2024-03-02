@@ -1,3 +1,4 @@
-def app(apply){
-  echo "Going to be perform terraform apply auto approval"
+def apply(){
+  echo "Terraform apply with auto approval in progress"
+  sh 'terraform apply --auto-approve
 }
