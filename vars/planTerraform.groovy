@@ -1,4 +1,4 @@
-def plan(){
+def call(){
   echo "Terraform plan in progress.."
   sh 'terraform plan'
 }
