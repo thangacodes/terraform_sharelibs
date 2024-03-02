@@ -1,8 +1,8 @@
-def checkout(){
+def call(){
 	echo "Cloning the code repo from GitHub.."
 	sh '''
               git clone https://github.com/thangacodes/terraform_sharelibs.git
 	      pwd
-              cd ec2_spinup
+              cd terraform_sharelibs/ec2_spinup
 	      '''
 }
