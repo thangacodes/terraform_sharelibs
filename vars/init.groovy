@@ -1,3 +1,4 @@
-def init(apply){
-  echo "Going to execute terraform init"
+def init(){
+  echo "Terraform initialization in progress.."
+  sh 'terraform init'
 }
