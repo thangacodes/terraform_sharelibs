@@ -1,27 +1,63 @@
-@Library('my-tf-library@main') _
+@Library('my-tf-library') _
 
-pipeline{
+import hudson.model.*
+import hudson.EnvVars
+import groovy.json.JsonSlurperClassic
+import groovy.json.JsonBuilder
+import groovy.json.JsonOutput
+import groovy.json.*
+import java.net.URL
+
+pipeline {
     agent any
+
     stages {
-       stage('Checkout'){
-          steps {
-            codeCheckout()
+        stage('Load Libraries') {
+            steps {
+                echo 'Hello, I am from Jenkins shared library'
+            }
+        }
+        stage('Code Checkout'){
+            steps{
+                script{
+                echo "Code cloning in progress"
+                codeCheckout()
+            }
+        }
     }
-}
-stage('tfinit'){
-    steps {
-        initTerraform()
+        stage ('Tf Init'){
+            steps{
+                script{
+                initTerraform()
+            }
+        }
     }
-}
-stage('tfvalidate'){
-    steps {
-        validateTerraform()
+	    stage ('TF Validate'){
+            steps{
+                script{
+                validateTerraform()
+            }
+        }
     }
-}
-stage('plan'){
-    steps {
-        planTerraform()
+	    stage ('TF Plan'){
+            steps{
+                script{
+                planTerraform()
+            }
+        }
     }
-}
-}
-}
+    	stage ('TF Apply'){
+            steps{
+                script{
+                applyTerraform()
+            }
+        }
+    }
+    }
+    post {
+        always {
+            // deleteDir()
+            cleanWs()
+        }
+    }
+  }
