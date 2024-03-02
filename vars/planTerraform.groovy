@@ -1,4 +1,7 @@
 def call(){
   echo "Terraform plan in progress.."
-  sh 'terraform plan'
+    sh '''
+      cd terraform_sharelibs/ec2_spinup
+      terraform plan
+  '''
 }
