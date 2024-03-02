@@ -1,0 +1,42 @@
+@library('my-tf-library') _
+
+import hudson.model.*
+import hudson.EnvVars
+import groovy.json.JsonSlurperClassic
+import groovy.json.JsonBuilder
+import groovy.json.JsonOutput
+import groovy.json.*
+import java.net.URL
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Load Libraries') {
+            steps {
+                echo 'Loading terraform shared libraries..'
+            }
+        }
+        stage ('Tf Refresh'){
+            steps{
+                script{
+                refreshTerraform()
+            }
+        }
+    }
+        stage('Infra Destroy'){
+            steps{
+                script{
+                echo "Infra services will be getting deleted by terraform..."
+                destroyTerraform()
+            }
+        }
+    }
+    }
+    post {
+        always {
+            // deleteDir()
+            cleanWs()
+        }
+    }
+  }
