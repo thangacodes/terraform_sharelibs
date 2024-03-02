@@ -1,4 +1,4 @@
-def init{
+def init(){
                 echo "Terraform initialization in progress"
                 sh '''
                 pwd
