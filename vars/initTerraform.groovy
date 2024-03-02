@@ -1,4 +1,4 @@
-def tfinit(){
+def call(){
   echo "Terraform initialization in progress"
   sh '''
      pwd
