@@ -1,4 +1,4 @@
-@library('my-tf-library') _
+@Library('my-tf-library') _
 
 import hudson.model.*
 import hudson.EnvVars
