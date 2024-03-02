@@ -8,19 +8,19 @@ pipeline{
             codeCheckout()
     }
 }
-stage('init'){
+stage('tfinit'){
     steps {
-        init()
+        initTerraform()
     }
 }
-stage('validate'){
+stage('tfvalidate'){
     steps {
-        validate()
+        validateTerraform()
     }
 }
 stage('plan'){
     steps {
-        plan()
+        planTerraform()
     }
 }
 }
