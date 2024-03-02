@@ -1,4 +1,7 @@
-def apply(){
+def call(){
   echo "Terraform apply with auto approval in progress"
-  sh 'terraform apply --auto-approve'
+    sh '''
+      cd terraform_sharelibs/ec2_spinup
+      #terraform apply --auto-approve
+  '''
 }
