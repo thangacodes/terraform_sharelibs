@@ -9,6 +9,10 @@ Developers/IaC automation guys use shared libraries to avoid writing the same co
 
 3.Changes has been maintained in Version Control
 
+4.Standardization of pipelines
+
+5. Reduce risk of errors
+
 
 In order to implement Jenkins shared library in Jenkins CICD, following things needs to be in place.
 
